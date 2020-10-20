@@ -442,7 +442,8 @@ func (sb *SafeBrowser) LookupURLsContext(ctx context.Context, urls []string) (th
 		if err != nil {
 			sb.log.Printf("error generating urlhashes: %v", err)
 			atomic.AddInt64(&sb.stats.QueriesFail, int64(len(urls)-i))
-			return threats, err
+			// return threats, err
+			continue
 		}
 
 		for fullHash, pattern := range urlhashes {
